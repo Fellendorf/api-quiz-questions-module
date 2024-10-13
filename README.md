@@ -74,11 +74,55 @@ ${\textsf{\color{lightgreen}GET}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/qu
 
 ${\textsf{\color{orange}POST}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/question`
 
-TODO: finish this section
+#### REQUEST BODY
+
+```
+    {
+        topic: string;
+        text: string;
+        code?: {
+            text: string;
+            language: 'typescript' | 'javascript' | 'html' | 'css';
+        }
+        options: string[];
+        answer: {
+            index: number;
+            explanation?: string;
+        };
+    }
+```
+
+# How to use
+
+Install the package to the main NestJS application and add it to the main module imports:
+
+```
+import { QuestionsModule } from '@fellendorf/api-quiz-questions-module';
+
+@Module({
+  imports: [QuestionsModule],
+  controllers: [],
+  providers: [],
+})
+```
+
+> [!IMPORTANT]
+> Main application must be connected to the MongoDB database.
 
 # How to develop
 
-TODO: describe
+Both this module package and the main application must be located locally on the same computer.  
+Follow these steps:
+
+1. This module package:
+
+   1.1 Run `npm link` command. This will create a symbolic link from the package directory to the global **node_modules** directory
+
+   1.2 Run `tsc -w` command to compile this module code in the "watch" mode.
+
+2. In the main application run `npm link @fellendorf/api-quiz-questions-module` command. This will create a symbolic link from **node_modules/@fellendorf/api-quiz-questions-module** within the codebase to the global **node_modules**
+
+Unfortunately, the main application will not recompile the code when you make some changes in the module local repository. Therefore, you should handle it manually.
 
 # App TODO:
 
