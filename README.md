@@ -4,14 +4,14 @@ NestJS module containing **Questions** REST API endpoints for **[Quiz](https://g
 
 # API endpoints
 
-[Retrieves a list of quiz questions]()
-[Retrieves a list of quiz topics]()
+[Retrieves a list of quiz questions](#retrieves-a-list-of-quiz-questions)  
+[Retrieves a list of quiz topics](#retrieves-a-list-of-quiz-topics)
 
 ## Retrieves a list of quiz questions
 
 <br/>
 
-${\textsf{\color{lightgreen}GET}}$ `https://{host}/quiz/questions`
+${\textsf{\color{lightgreen}GET}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/questions`
 
 <br/>
 
@@ -23,7 +23,7 @@ ${\textsf{\color{lightgreen}GET}}$ `https://{host}/quiz/questions`
 <br/>
 
 > [!TIP]
-> To request a few topics, use a few "topics[]" query parameters. For example:
+> To filter by multiple topics, use a few "topics[]" query parameters. For example:
 >
 > ```
 > /quiz/questions?topics[]=HTML&topics[]=CSS
