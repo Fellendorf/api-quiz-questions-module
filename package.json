@@ -2,14 +2,14 @@
   "name": "@fellendorf/api-quiz-questions-module",
   "version": "1.1.4",
   "description": "NestJS module containing \"questions\" REST API endpoints for \"quiz\" application",
+  "author": "Artsiom Finenka",
+  "license": "ISC",
   "main": "dist/questions.module.js",
   "types": "dist/questions.module.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Artsiom Finenka",
-  "license": "ISC",
   "dependencies": {
     "@nestjs/common": "^10.4.4",
     "@nestjs/mongoose": "^10.0.10",
