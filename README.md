@@ -1,16 +1,23 @@
-1. Before a project start, create a scoped public package:
+# Description
 
-- npm init --scope=@fellendorf
+NestJS module containing Questions REST API endpoints for ["quiz"](https://github.com/Fellendorf/quiz-ui) application.
 
-2. Добавьте "declaration": true в compilerOptions в tsconfig.json
-3. Добавте в package.json
+## API endpoints
 
-- "main": "dist/index.js",
-- "types": "dist/index.d.ts",
+Retrieves a list of quiz questions based on the provided topics and count:
 
-4. To publish a scoped public package, use the following command from the root directory:
+`GET` `https://{host}/quiz/questions`
 
-- npm publish --access public
+Query params:
+
+| Query param | Type   | Required | Description                         | Example |
+| ----------- | ------ | -------- | ----------------------------------- | ------- |
+| topics[]    | string | false    | The topics to filter questions by   | "html"  |
+| count       | number | false    | The number of questions to retrieve | 10      |
+
+> [!TIP]
+> To send a few topics, use a few "topics[]" query parameters. For example
+> `quiz/questions?topics[]=html&topics[]=css`
 
 TODO:
 
