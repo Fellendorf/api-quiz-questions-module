@@ -1,18 +1,21 @@
 # Description
 
-NestJS module containing **Questions** REST API endpoints for **[Quiz](https://github.com/Fellendorf/quiz-ui)** application.
+NestJS module containing **Questions** REST API endpoints for **[Quiz](https://github.com/Fellendorf/quiz-ui)** application.  
+Table of Contents:
+
+[API endpoints](#api-endpoints)
+
+- [Retrieve a list of quiz questions](#retrieve-a-list-of-quiz-questions)
+- [Retrieve a list of quiz topics](#retrieve-a-list-of-quiz-topics)
+- [Create a new quiz question](#create-a-new-quiz-question)
+
+[How to develop](#how-to-develop)
 
 # API endpoints
-
-[Retrieve a list of quiz questions](#retrieve-a-list-of-quiz-questions)  
-[Retrieve a list of quiz topics](#retrieve-a-list-of-quiz-topics)  
-[Create a new quiz question](#create-a-new-quiz-question)
 
 ## Retrieve a list of quiz questions
 
 &nbsp; &nbsp; ${\textsf{\color{lightgreen}GET}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/questions`
-
----
 
 #### QUERY PARAMS
 
@@ -54,8 +57,6 @@ NestJS module containing **Questions** REST API endpoints for **[Quiz](https://g
 
 ${\textsf{\color{lightgreen}GET}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/topics`
 
----
-
 #### RESPONSE BODY
 
 ```
@@ -73,7 +74,12 @@ ${\textsf{\color{lightgreen}GET}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/qu
 
 ${\textsf{\color{orange}POST}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/question`
 
-TODO:
+TODO: finish this section
 
-- README.md
+# How to develop
+
+TODO: describe
+
+# App TODO:
+
 - TESTS
