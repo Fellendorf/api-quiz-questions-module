@@ -10,21 +10,36 @@ NestJS module containing **Questions** REST API endpoints for **[Quiz](https://g
 
 ## Retrieve a list of quiz questions
 
-<br/>
+&nbsp; &nbsp; ${\textsf{\color{lightgreen}GET}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/questions`
 
-| ${\textsf{\color{lightgreen}GET}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/questions` |
-| --------------------------------------------------------------------------------------------- |
+---
 
-<br/>
+#### QUERY PARAMS
 
-${\textsf{\color{lightgreen}GET}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/questions`
+| Param    | Type   | Required | Description                         | Example |
+| -------- | ------ | -------- | ----------------------------------- | ------- |
+| topics[] | string | false    | The topics to filter questions by   | HTML    |
+| count    | number | false    | The number of questions to retrieve | 10      |
 
-<br/>
+#### RESPONSE BODY
 
-| Query param | Type   | Required | Description                         | Example |
-| ----------- | ------ | -------- | ----------------------------------- | ------- |
-| topics[]    | string | false    | The topics to filter questions by   | HTML    |
-| count       | number | false    | The number of questions to retrieve | 10      |
+```
+[
+    {
+        topic: string;
+        text: string;
+        code?: {
+            text: string;
+            language: 'typescript' | 'javascript' | 'html' | 'css';
+        }
+        options: string[];
+        answer: {
+            index: number;
+            explanation?: string;
+        };
+    }
+]
+```
 
 <br/>
 
@@ -37,11 +52,20 @@ ${\textsf{\color{lightgreen}GET}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/qu
 
 ## Retrieve a list of quiz topics
 
-<br/>
-
 ${\textsf{\color{lightgreen}GET}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/topics`
 
-<br/>
+---
+
+#### RESPONSE BODY
+
+```
+[
+    {
+        name: string;
+        questionCount: number;
+    }
+]
+```
 
 ## Create a new quiz question
 
