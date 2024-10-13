@@ -9,7 +9,10 @@ Table of Contents:
 - [Retrieve a list of quiz topics](#retrieve-a-list-of-quiz-topics)
 - [Create a new quiz question](#create-a-new-quiz-question)
 
+[How to use](#how-to-use)  
 [How to develop](#how-to-develop)
+
+<br/>
 
 # API endpoints
 
@@ -92,6 +95,8 @@ ${\textsf{\color{orange}POST}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/
     }
 ```
 
+<br/>
+
 # How to use
 
 Install the package to the main NestJS application and add it to the main module imports:
@@ -109,6 +114,8 @@ import { QuestionsModule } from '@fellendorf/api-quiz-questions-module';
 > [!IMPORTANT]
 > Main application must be connected to the MongoDB database.
 
+<br/>
+
 # How to develop
 
 Both this module package and the main application must be located locally on the same computer.  
@@ -123,6 +130,8 @@ Follow these steps:
 2. In the main application run `npm link @fellendorf/api-quiz-questions-module` command. This will create a symbolic link from **node_modules/@fellendorf/api-quiz-questions-module** within the codebase to the global **node_modules**
 
 Unfortunately, the main application will not recompile the code when you make some changes in the module local repository. Therefore, you should handle it manually.
+
+<br/>
 
 # App TODO:
 
