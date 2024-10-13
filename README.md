@@ -4,10 +4,16 @@ NestJS module containing **Questions** REST API endpoints for **[Quiz](https://g
 
 # API endpoints
 
-[Retrieves a list of quiz questions](#retrieves-a-list-of-quiz-questions)  
-[Retrieves a list of quiz topics](#retrieves-a-list-of-quiz-topics)
+[Retrieve a list of quiz questions](#retrieve-a-list-of-quiz-questions)  
+[Retrieve a list of quiz topics](#retrieve-a-list-of-quiz-topics)  
+[Create a new quiz question](#create-a-new-quiz-question)
 
-## Retrieves a list of quiz questions
+## Retrieve a list of quiz questions
+
+<br/>
+
+| ${\textsf{\color{lightgreen}GET}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/questions` |
+| --------------------------------------------------------------------------------------------- |
 
 <br/>
 
@@ -29,7 +35,19 @@ ${\textsf{\color{lightgreen}GET}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/qu
 > /quiz/questions?topics[]=HTML&topics[]=CSS
 > ```
 
-## Retrieves a list of quiz topics
+## Retrieve a list of quiz topics
+
+<br/>
+
+${\textsf{\color{lightgreen}GET}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/topics`
+
+<br/>
+
+## Create a new quiz question
+
+<br/>
+
+${\textsf{\color{orange}POST}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/question`
 
 TODO:
 
