@@ -1,4 +1,3 @@
-import { Type } from 'class-transformer';
 import {
   IsArray,
   IsEnum,
@@ -49,7 +48,6 @@ export class CreateQuestionDto implements Question {
   @IsOptional()
   @IsObject()
   @ValidateNested()
-  @Type(() => CodeDTO)
   code?: CodeDTO;
 
   @IsArray()
@@ -57,8 +55,13 @@ export class CreateQuestionDto implements Question {
   options: string[];
 
   @IsNotEmptyObject()
-  @IsObject()
   @ValidateNested()
-  @Type(() => AnswerDTO)
   answer: AnswerDTO;
+
+  /**
+   * Note:
+   * To validate nested object:
+   * - use nested object DTO as a type of the property
+   * - use "transformOptions: { enableImplicitConversion: true }" option in the ValidationPipe
+   */
 }

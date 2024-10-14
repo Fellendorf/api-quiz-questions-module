@@ -1,6 +1,6 @@
 {
   "name": "@fellendorf/api-quiz-questions-module",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "NestJS module containing \"questions\" REST API endpoints for \"quiz\" application",
   "author": "Artsiom Finenka",
   "license": "ISC",

@@ -1,9 +1,30 @@
 import { Schema } from 'mongoose';
-import { languages, Question } from './question.interface';
+import { Answer, Code, languages, Question } from './question.interface';
 
 export const QUESTION_MODEL_NAME = 'Question';
 
 const COLLECTION_NAME = 'quiz-questions';
+
+const AnswerSchema = new Schema<Answer>({
+  index: {
+    type: Number,
+    required: true,
+  },
+  explanation: {
+    type: String,
+    required: false,
+  },
+});
+
+const CodeSchema = new Schema<Code>({
+  text: { type: String, required: true },
+  language: {
+    type: String,
+    enum: languages,
+    required: true,
+    lowercase: true,
+  },
+});
 
 export const QuestionSchema = new Schema<Question>(
   {
@@ -18,15 +39,7 @@ export const QuestionSchema = new Schema<Question>(
     code: {
       _id: false,
       required: false,
-      type: {
-        text: { type: String, required: true },
-        language: {
-          type: String,
-          enum: languages,
-          required: true,
-          lowercase: true,
-        },
-      },
+      type: CodeSchema,
     },
     options: {
       type: [String],
@@ -35,10 +48,7 @@ export const QuestionSchema = new Schema<Question>(
 
     answer: {
       _id: false,
-      type: {
-        index: { type: Number },
-        explanation: { type: String, required: false },
-      },
+      type: AnswerSchema,
       required: true,
     },
   },
