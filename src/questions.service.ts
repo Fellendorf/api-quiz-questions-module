@@ -49,10 +49,17 @@ export class QuestionsService {
       );
   }
 
-  public async createQuestion(
-    newQuestion: CreateQuestionDto,
-  ): Promise<Question> {
-    const questionDocument = new this.questionModel(newQuestion);
-    return questionDocument.save();
+  public async createQuestion(newQuestion: CreateQuestionDto) {
+    await this.questionModel.insertMany([newQuestion]);
+    return {
+      message: 'Question was created successfully',
+    };
+  }
+
+  public async createQuestions(newQuestions: CreateQuestionDto[]) {
+    await this.questionModel.insertMany(newQuestions);
+    return {
+      message: 'Questions were created successfully',
+    };
   }
 }

@@ -15,6 +15,7 @@ import {
   languages,
   Question,
 } from '../question.interface';
+import { Type } from 'class-transformer';
 
 class AnswerDTO implements Answer {
   @IsNumber()
@@ -64,4 +65,11 @@ export class CreateQuestionDto implements Question {
    * - use nested object DTO as a type of the property
    * - use "transformOptions: { enableImplicitConversion: true }" option in the ValidationPipe
    */
+}
+
+export class CreateQuestionsDto {
+  @IsArray()
+  @ValidateNested()
+  @Type(() => CreateQuestionDto)
+  questions: CreateQuestionDto[];
 }

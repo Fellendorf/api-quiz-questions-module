@@ -80,6 +80,31 @@ ${\textsf{\color{orange}POST}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/
 #### REQUEST BODY
 
 ```
+{
+    topic: string;
+    text: string;
+    code?: {
+        text: string;
+        language: 'typescript' | 'javascript' | 'html' | 'css';
+    }
+    options: string[];
+    answer: {
+        index: number;
+        explanation?: string;
+    };
+}
+```
+
+## Create new quiz questions
+
+<br/>
+
+${\textsf{\color{orange}POST}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/questions`
+
+#### REQUEST BODY
+
+```
+[
     {
         topic: string;
         text: string;
@@ -93,6 +118,7 @@ ${\textsf{\color{orange}POST}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/
             explanation?: string;
         };
     }
+]
 ```
 
 <br/>
