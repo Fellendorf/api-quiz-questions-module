@@ -144,18 +144,13 @@ import { QuestionsModule } from '@fellendorf/api-quiz-questions-module';
 
 # How to develop
 
-Both this module package and the main application must be located locally on the same computer.  
-Follow these steps:
+Repository contains an app module (`src/_dev-only`) just for development purposes. Additionally:
 
-1. This module package:
+- command `npm run build` is set to use this main module to develop the "Questions" module;
+- the folder containing the main module will not be included in the npm package (see `.npmignore` file)
 
-   1.1 Run `npm link` command. This will create a symbolic link from the package directory to the global **node_modules** directory
-
-   1.2 Run `tsc -w` command to compile this module code in the "watch" mode.
-
-2. In the main application run `npm link @fellendorf/api-quiz-questions-module` command. This will create a symbolic link from **node_modules/@fellendorf/api-quiz-questions-module** within the codebase to the global **node_modules**
-
-Unfortunately, the main application will not recompile the code when you make some changes in the module local repository. Therefore, you should handle it manually.
+> [!NOTE]
+> Using `npm link` command or `file://...` path in pacakge.json brings some bugs.
 
 <br/>
 

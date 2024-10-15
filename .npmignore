@@ -1,3 +1,5 @@
+./dev-only
+
 tsconfig.tsbuildinfo
 *.js.map
 *.ts
