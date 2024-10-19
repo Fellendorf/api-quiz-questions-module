@@ -60,8 +60,8 @@ export class QuestionsService {
     const result = await this.questionModel.findByIdAndDelete(id);
     return {
       message: result
-        ? 'Question was not found'
-        : 'Question was deleted successfully',
+        ? 'Question was deleted successfully'
+        : 'Question was not found',
     };
   }
 
