@@ -95,6 +95,18 @@ ${\textsf{\color{orange}POST}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/
 }
 ```
 
+## Delete a quiz question by id
+
+<br/>
+
+${\textsf{\color{orange}POST}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/question`
+
+#### QUERY PARAMS
+
+| Param | Type   | Required | Description           | Example                  |
+| ----- | ------ | -------- | --------------------- | ------------------------ |
+| id    | string | true     | Question ID to delete | 671438511204ca5ad9df5366 |
+
 ## Create new quiz questions
 
 <br/>

@@ -56,6 +56,13 @@ export class QuestionsService {
     };
   }
 
+  public async deleteQuestion(id: string) {
+    await this.questionModel.findByIdAndDelete(id);
+    return {
+      message: 'Question was deleted successfully',
+    };
+  }
+
   public async createQuestions(newQuestions: CreateQuestionDto[]) {
     await this.questionModel.insertMany(newQuestions);
     return {
