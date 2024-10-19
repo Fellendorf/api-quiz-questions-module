@@ -57,9 +57,11 @@ export class QuestionsService {
   }
 
   public async deleteQuestion(id: string) {
-    await this.questionModel.findByIdAndDelete(id);
+    const result = await this.questionModel.findByIdAndDelete(id);
     return {
-      message: 'Question was deleted successfully',
+      message: result
+        ? 'Question was not found'
+        : 'Question was deleted successfully',
     };
   }
 
