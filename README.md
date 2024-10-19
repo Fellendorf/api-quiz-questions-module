@@ -8,6 +8,8 @@ Table of Contents:
 - [Retrieve a list of quiz questions](#retrieve-a-list-of-quiz-questions)
 - [Retrieve a list of quiz topics](#retrieve-a-list-of-quiz-topics)
 - [Create a new quiz question](#create-a-new-quiz-question)
+- [Delete a quiz question by id](#delete-a-quiz-question-by-id)
+- [Create new quiz questions](#create-new-quiz-questions)
 
 [How to use](#how-to-use)  
 [How to develop](#how-to-develop)
