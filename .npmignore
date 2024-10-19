@@ -1,4 +1,4 @@
-./dev-only
+./_dev-only
 
 tsconfig.tsbuildinfo
 *.js.map
