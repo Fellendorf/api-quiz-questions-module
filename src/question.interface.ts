@@ -4,6 +4,7 @@ export interface Question {
   code?: Code;
   options: string[];
   answer: Answer;
+  meta?: Meta;
 }
 
 export interface Code {
@@ -16,5 +17,13 @@ export interface Answer {
   explanation?: string;
 }
 
+export interface Meta {
+  reviewed?: boolean;
+  difficult?: Difficulty;
+}
+
 export const languages = ['typescript', 'javascript', 'html', 'css'] as const;
 export type Language = (typeof languages)[number];
+
+export const difficulties = ['easy', 'medium', 'hard'] as const;
+export type Difficulty = (typeof difficulties)[number];

@@ -8,6 +8,7 @@ Table of Contents:
 - [Retrieve a list of quiz questions](#retrieve-a-list-of-quiz-questions)
 - [Retrieve a list of quiz topics](#retrieve-a-list-of-quiz-topics)
 - [Create a new quiz question](#create-a-new-quiz-question)
+- [Update a quiz question](#update-a-quiz-question)
 - [Delete a quiz question by id](#delete-a-quiz-question-by-id)
 - [Create new quiz questions](#create-new-quiz-questions)
 
@@ -83,6 +84,31 @@ ${\textsf{\color{orange}POST}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/
 
 ```
 {
+    topic: string;
+    text: string;
+    code?: {
+        text: string;
+        language: 'typescript' | 'javascript' | 'html' | 'css';
+    }
+    options: string[];
+    answer: {
+        index: number;
+        explanation?: string;
+    };
+}
+```
+
+## Update a quiz question
+
+<br/>
+
+${\textsf{\color{blue}PUT}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/question`
+
+#### REQUEST BODY
+
+```
+{
+    _id: string;
     topic: string;
     text: string;
     code?: {

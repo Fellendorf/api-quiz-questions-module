@@ -5,6 +5,7 @@ import { Model } from 'mongoose';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { Question } from './question.interface';
 import { QUESTION_MODEL_NAME } from './question.schema';
+import { UpdateQuestionDto } from './dto/update-question.dto';
 
 type QuestionFilter = {
   topic?: {
@@ -24,6 +25,33 @@ export class QuestionsService {
     private readonly questionModel: Model<Question>,
   ) {}
 
+  public async createQuestion(newQuestion: CreateQuestionDto) {
+    await this.questionModel.insertMany([newQuestion]);
+    return {
+      message: 'Question was created successfully',
+    };
+  }
+
+  public async updateQuestion(updatedQuestion: UpdateQuestionDto) {
+    await this.questionModel.updateOne(
+      { _id: updatedQuestion._id },
+      updatedQuestion,
+    );
+
+    return {
+      message: 'Question was updated successfully',
+    };
+  }
+
+  public async deleteQuestion(id: string) {
+    const result = await this.questionModel.findByIdAndDelete(id);
+    return {
+      message: result
+        ? 'Question was deleted successfully'
+        : 'Question was not found',
+    };
+  }
+
   public async getQuestions(
     topics?: string[],
     count: number = 10,
@@ -38,6 +66,13 @@ export class QuestionsService {
     ]);
   }
 
+  public async createQuestions(newQuestions: CreateQuestionDto[]) {
+    await this.questionModel.insertMany(newQuestions);
+    return {
+      message: `${newQuestions.length} questions were created successfully`,
+    };
+  }
+
   public async getTopics(): Promise<Topic[]> {
     return this.questionModel
       .aggregate([
@@ -47,28 +82,5 @@ export class QuestionsService {
       .then((topics: Topic[]) =>
         topics.sort((a, b) => a.name.localeCompare(b.name)),
       );
-  }
-
-  public async createQuestion(newQuestion: CreateQuestionDto) {
-    await this.questionModel.insertMany([newQuestion]);
-    return {
-      message: 'Question was created successfully',
-    };
-  }
-
-  public async deleteQuestion(id: string) {
-    const result = await this.questionModel.findByIdAndDelete(id);
-    return {
-      message: result
-        ? 'Question was deleted successfully'
-        : 'Question was not found',
-    };
-  }
-
-  public async createQuestions(newQuestions: CreateQuestionDto[]) {
-    await this.questionModel.insertMany(newQuestions);
-    return {
-      message: 'Questions were created successfully',
-    };
   }
 }

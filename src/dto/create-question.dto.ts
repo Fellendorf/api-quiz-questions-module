@@ -66,10 +66,3 @@ export class CreateQuestionDto implements Question {
    * - use "transformOptions: { enableImplicitConversion: true }" option in the ValidationPipe
    */
 }
-
-export class CreateQuestionsDto {
-  @IsArray()
-  @ValidateNested()
-  @Type(() => CreateQuestionDto)
-  questions: CreateQuestionDto[];
-}

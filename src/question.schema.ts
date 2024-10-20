@@ -1,5 +1,12 @@
 import { Schema } from 'mongoose';
-import { Answer, Code, languages, Question } from './question.interface';
+import {
+  Answer,
+  Code,
+  difficulties,
+  languages,
+  Meta,
+  Question,
+} from './question.interface';
 
 export const QUESTION_MODEL_NAME = 'Question';
 
@@ -26,6 +33,20 @@ const CodeSchema = new Schema<Code>({
   },
 });
 
+const MetaSchema = new Schema<Meta>({
+  reviewed: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
+  difficult: {
+    type: String,
+    enum: difficulties,
+    required: false,
+    lowercase: true,
+  },
+});
+
 export const QuestionSchema = new Schema<Question>(
   {
     topic: {
@@ -45,14 +66,19 @@ export const QuestionSchema = new Schema<Question>(
       type: [String],
       required: true,
     },
-
     answer: {
       _id: false,
       type: AnswerSchema,
       required: true,
     },
+    meta: {
+      _id: false,
+      type: MetaSchema,
+      requred: false,
+    },
   },
   {
     collection: COLLECTION_NAME,
+    versionKey: false,
   },
 );
