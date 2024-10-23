@@ -1,17 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { FilterQuery, Model, PipelineStage } from 'mongoose';
 
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { Question } from './question.interface';
 import { QUESTION_MODEL_NAME } from './question.schema';
 import { UpdateQuestionDto } from './dto/update-question.dto';
-
-type QuestionFilter = {
-  topic?: {
-    $in: string[];
-  };
-};
 
 type Topic = {
   name: string;
@@ -54,16 +48,18 @@ export class QuestionsService {
 
   public async getQuestions(
     topics?: string[],
-    count: number = 10,
+    count?: number,
   ): Promise<Question[]> {
-    const filter: QuestionFilter = {};
+    const pipelineStage: PipelineStage[] = [];
+
     if (topics?.length > 0) {
-      filter.topic = { $in: topics };
+      pipelineStage.push({ $match: { topic: { $in: topics } } });
     }
-    return this.questionModel.aggregate([
-      { $match: filter },
-      { $sample: { size: count } },
-    ]);
+    if (count > 0) {
+      pipelineStage.push({ $sample: { size: count } });
+    }
+    pipelineStage.push({ $sort: { text: -1 } });
+    return this.questionModel.aggregate(pipelineStage);
   }
 
   public async createQuestions(newQuestions: CreateQuestionDto[]) {
