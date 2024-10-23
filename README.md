@@ -169,6 +169,10 @@ ${\textsf{\color{orange}POST}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/
             index: number;
             explanation?: string;
         };
+        meta?: {
+            reviewed?: boolean;
+            difficult?: 'easy' | 'medium' | 'hard';
+        }
     }
 ]
 ```
