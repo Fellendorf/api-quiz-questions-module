@@ -5,11 +5,12 @@ Table of Contents:
 
 [API endpoints](#api-endpoints)
 
-- [Retrieve a list of quiz questions](#retrieve-a-list-of-quiz-questions)
-- [Retrieve a list of quiz topics](#retrieve-a-list-of-quiz-topics)
+- [Retrieve a quiz question by id](#retrieve-a-quiz-question-by-id)
 - [Create a new quiz question](#create-a-new-quiz-question)
 - [Update a quiz question](#update-a-quiz-question)
 - [Delete a quiz question by id](#delete-a-quiz-question-by-id)
+- [Retrieve a list of quiz questions](#retrieve-a-list-of-quiz-questions)
+- [Retrieve a list of quiz topics](#retrieve-a-list-of-quiz-topics)
 - [Create new quiz questions](#create-new-quiz-questions)
 
 [How to use](#how-to-use)  
@@ -18,6 +19,111 @@ Table of Contents:
 <br/>
 
 # API endpoints
+
+<br/>
+
+## Retrieve a quiz question by id
+
+&nbsp; &nbsp; ${\textsf{\color{lightgreen}GET}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/question`
+
+#### QUERY PARAMS
+
+| Param | Type   | Required | Description            | Example                  |
+| ----- | ------ | -------- | ---------------------- | ------------------------ |
+| id    | string | true     | The question ID to get | 671d7510132024de0ed47304 |
+
+#### RESPONSE BODY
+
+```
+{
+    topic: string;
+    text: string;
+    code?: {
+        text: string;
+        language: 'typescript' | 'javascript' | 'html' | 'css';
+    }
+    options: string[];
+    answer: {
+        index: number;
+        explanation?: string;
+    };
+    meta?: {
+        reviewed?: boolean;
+        difficult?: 'easy' | 'medium' | 'hard';
+    }
+}
+```
+
+<br>
+
+## Create a new quiz question
+
+${\textsf{\color{orange}POST}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/question`
+
+#### REQUEST BODY
+
+```
+{
+    topic: string;
+    text: string;
+    code?: {
+        text: string;
+        language: 'typescript' | 'javascript' | 'html' | 'css';
+    }
+    options: string[];
+    answer: {
+        index: number;
+        explanation?: string;
+    };
+    meta?: {
+        reviewed?: boolean;
+        difficult?: 'easy' | 'medium' | 'hard';
+    }
+}
+```
+
+<br/>
+
+## Update a quiz question
+
+${\textsf{\color{blue}PUT}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/question`
+
+#### REQUEST BODY
+
+```
+{
+    _id: string;
+    topic: string;
+    text: string;
+    code?: {
+        text: string;
+        language: 'typescript' | 'javascript' | 'html' | 'css';
+    }
+    options: string[];
+    answer: {
+        index: number;
+        explanation?: string;
+    };
+    meta?: {
+        reviewed?: boolean;
+        difficult?: 'easy' | 'medium' | 'hard';
+    }
+}
+```
+
+<br/>
+
+## Delete a quiz question by id
+
+${\textsf{\color{red}DELETE}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/question`
+
+#### QUERY PARAMS
+
+| Param | Type   | Required | Description           | Example                  |
+| ----- | ------ | -------- | --------------------- | ------------------------ |
+| id    | string | true     | Question ID to delete | 671438511204ca5ad9df5366 |
+
+<br/>
 
 ## Retrieve a list of quiz questions
 
@@ -63,6 +169,8 @@ Table of Contents:
 > /quiz/questions?topics[]=HTML&topics[]=CSS
 > ```
 
+<br/>
+
 ## Retrieve a list of quiz topics
 
 ${\textsf{\color{lightgreen}GET}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/topics`
@@ -78,78 +186,9 @@ ${\textsf{\color{lightgreen}GET}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/qu
 ]
 ```
 
-## Create a new quiz question
-
 <br/>
-
-${\textsf{\color{orange}POST}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/question`
-
-#### REQUEST BODY
-
-```
-{
-    topic: string;
-    text: string;
-    code?: {
-        text: string;
-        language: 'typescript' | 'javascript' | 'html' | 'css';
-    }
-    options: string[];
-    answer: {
-        index: number;
-        explanation?: string;
-    };
-    meta?: {
-        reviewed?: boolean;
-        difficult?: 'easy' | 'medium' | 'hard';
-    }
-}
-```
-
-## Update a quiz question
-
-<br/>
-
-${\textsf{\color{blue}PUT}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/question`
-
-#### REQUEST BODY
-
-```
-{
-    _id: string;
-    topic: string;
-    text: string;
-    code?: {
-        text: string;
-        language: 'typescript' | 'javascript' | 'html' | 'css';
-    }
-    options: string[];
-    answer: {
-        index: number;
-        explanation?: string;
-    };
-    meta?: {
-        reviewed?: boolean;
-        difficult?: 'easy' | 'medium' | 'hard';
-    }
-}
-```
-
-## Delete a quiz question by id
-
-<br/>
-
-${\textsf{\color{red}DELETE}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/question`
-
-#### QUERY PARAMS
-
-| Param | Type   | Required | Description           | Example                  |
-| ----- | ------ | -------- | --------------------- | ------------------------ |
-| id    | string | true     | Question ID to delete | 671438511204ca5ad9df5366 |
 
 ## Create new quiz questions
-
-<br/>
 
 ${\textsf{\color{orange}POST}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/questions`
 

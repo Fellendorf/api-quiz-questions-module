@@ -19,6 +19,10 @@ export class QuestionsService {
     private readonly questionModel: Model<Question>,
   ) {}
 
+  public async getQuestion(id: string): Promise<Question> {
+    return this.questionModel.findById(id);
+  }
+
   public async createQuestion(newQuestion: CreateQuestionDto) {
     await this.questionModel.insertMany([newQuestion]);
     return {

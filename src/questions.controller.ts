@@ -14,10 +14,16 @@ import { GetQuestionsDto } from './dto/get-questions.dto';
 import { CreateQuestionsDto } from './dto/create-questions.dto';
 import { DeleteQuestionDTO } from './dto/delete-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
+import { GetQuestionDto } from './dto/get-question.dto';
 
 @Controller('quiz')
 export class QuestionsController {
   constructor(private readonly questionsService: QuestionsService) {}
+
+  @Get('question')
+  private getQuestion(@Query() { id }: GetQuestionDto) {
+    return this.questionsService.getQuestion(id);
+  }
 
   @Post('question')
   private createQuestion(@Body() newQuestion: CreateQuestionDto) {
