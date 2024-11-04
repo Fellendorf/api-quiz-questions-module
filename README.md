@@ -108,8 +108,6 @@ ${\textsf{\color{blue}PUT}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/que
     explanation?: string;
     reviewed?: boolean;
     difficult?: 'easy' | 'medium' | 'hard';
-    createdAt: Date;
-    updatedAt: Date;
 }
 ```
 
