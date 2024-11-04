@@ -1,10 +1,12 @@
 export interface Question {
   topic: string;
+  subtopic?: string;
   text: string;
   code?: Code;
-  options: string[];
-  answer: Answer;
-  meta?: Meta;
+  options: Option[];
+  explanation?: string;
+  reviewed?: boolean;
+  difficult?: Difficulty;
 }
 
 export interface Code {
@@ -12,14 +14,9 @@ export interface Code {
   language: Language;
 }
 
-export interface Answer {
-  index: number;
-  explanation?: string;
-}
-
-export interface Meta {
-  reviewed?: boolean;
-  difficult?: Difficulty;
+export interface Option {
+  text: string;
+  isCorrect?: boolean;
 }
 
 export const languages = ['typescript', 'javascript', 'html', 'css'] as const;

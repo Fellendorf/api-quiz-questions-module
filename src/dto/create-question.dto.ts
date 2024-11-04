@@ -1,36 +1,36 @@
 import {
   IsArray,
+  IsBoolean,
   IsEnum,
-  IsNotEmptyObject,
-  IsNumber,
   IsObject,
   IsOptional,
   IsString,
   ValidateNested,
 } from 'class-validator';
 import {
-  Answer,
   Code,
+  difficulties,
+  Difficulty,
   Language,
   languages,
+  Option,
   Question,
 } from '../question.interface';
 import { Type } from 'class-transformer';
 
-class AnswerDTO implements Answer {
-  @IsNumber()
-  index: number;
+class OptionDTO implements Option {
+  @IsString()
+  text: string;
 
   @IsOptional()
-  @IsString()
-  explanation?: string;
+  @IsBoolean()
+  isCorrect?: boolean;
 }
 
 class CodeDTO implements Code {
   @IsString()
   text: string;
 
-  @IsString()
   @IsEnum(languages, {
     message: `language must be one of the following values: "${languages.join(
       '", "',
@@ -43,6 +43,10 @@ export class CreateQuestionDto implements Question {
   @IsString()
   topic: string;
 
+  @IsOptional()
+  @IsString()
+  subtopic?: string;
+
   @IsString()
   text: string;
 
@@ -52,12 +56,25 @@ export class CreateQuestionDto implements Question {
   code?: CodeDTO;
 
   @IsArray()
-  @IsString({ each: true })
-  options: string[];
+  @ValidateNested({ each: true })
+  @Type(() => OptionDTO)
+  options: OptionDTO[];
 
-  @IsNotEmptyObject()
-  @ValidateNested()
-  answer: AnswerDTO;
+  @IsOptional()
+  @IsString()
+  explanation?: string;
+
+  @IsOptional()
+  @IsBoolean()
+  reviewed?: boolean;
+
+  @IsOptional()
+  @IsEnum(difficulties, {
+    message: `difficult must be one of the following values: "${difficulties.join(
+      '", "',
+    )}"`,
+  })
+  difficult?: Difficulty;
 
   /**
    * Note:

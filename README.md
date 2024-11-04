@@ -36,21 +36,23 @@ Table of Contents:
 
 ```
 {
+    _id: string;
     topic: string;
+    subtopic?: string;
     text: string;
     code?: {
         text: string;
         language: 'typescript' | 'javascript' | 'html' | 'css';
     }
-    options: string[];
-    answer: {
-        index: number;
-        explanation?: string;
-    };
-    meta?: {
-        reviewed?: boolean;
-        difficult?: 'easy' | 'medium' | 'hard';
-    }
+    options: Array<{
+        text: string;
+        isCorrect?: boolean;
+    }>;
+    explanation?: string;
+    reviewed?: boolean;
+    difficult?: 'easy' | 'medium' | 'hard';
+    createdAt: Date;
+    updatedAt: Date;
 }
 ```
 
@@ -65,20 +67,19 @@ ${\textsf{\color{orange}POST}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/
 ```
 {
     topic: string;
+    subtopic?: string;
     text: string;
     code?: {
         text: string;
         language: 'typescript' | 'javascript' | 'html' | 'css';
     }
-    options: string[];
-    answer: {
-        index: number;
-        explanation?: string;
-    };
-    meta?: {
-        reviewed?: boolean;
-        difficult?: 'easy' | 'medium' | 'hard';
-    }
+    options: Array<{
+        text: string;
+        isCorrect?: boolean;
+    }>;
+    explanation?: string;
+    reviewed?: boolean;
+    difficult?: 'easy' | 'medium' | 'hard';
 }
 ```
 
@@ -94,20 +95,21 @@ ${\textsf{\color{blue}PUT}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/que
 {
     _id: string;
     topic: string;
+    subtopic?: string;
     text: string;
     code?: {
         text: string;
         language: 'typescript' | 'javascript' | 'html' | 'css';
     }
-    options: string[];
-    answer: {
-        index: number;
-        explanation?: string;
-    };
-    meta?: {
-        reviewed?: boolean;
-        difficult?: 'easy' | 'medium' | 'hard';
-    }
+    options: Array<{
+        text: string;
+        isCorrect?: boolean;
+    }>;
+    explanation?: string;
+    reviewed?: boolean;
+    difficult?: 'easy' | 'medium' | 'hard';
+    createdAt: Date;
+    updatedAt: Date;
 }
 ```
 
@@ -141,21 +143,23 @@ ${\textsf{\color{red}DELETE}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/q
 ```
 [
     {
+        _id: string;
         topic: string;
+        subtopic?: string;
         text: string;
         code?: {
             text: string;
             language: 'typescript' | 'javascript' | 'html' | 'css';
         }
-        options: string[];
-        answer: {
-            index: number;
-            explanation?: string;
-        };
-        meta?: {
-            reviewed?: boolean;
-            difficult?: 'easy' | 'medium' | 'hard';
-        }
+        options: Array<{
+            text: string;
+            isCorrect?: boolean;
+        }>;
+        explanation?: string;
+        reviewed?: boolean;
+        difficult?: 'easy' | 'medium' | 'hard';
+        createdAt: Date;
+        updatedAt: Date;
     }
 ]
 ```
@@ -198,20 +202,19 @@ ${\textsf{\color{orange}POST}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/
 [
     {
         topic: string;
+        subtopic?: string;
         text: string;
         code?: {
             text: string;
             language: 'typescript' | 'javascript' | 'html' | 'css';
         }
-        options: string[];
-        answer: {
-            index: number;
-            explanation?: string;
-        };
-        meta?: {
-            reviewed?: boolean;
-            difficult?: 'easy' | 'medium' | 'hard';
-        }
+        options: Array<{
+            text: string;
+            isCorrect?: boolean;
+        }>;
+        explanation?: string;
+        reviewed?: boolean;
+        difficult?: 'easy' | 'medium' | 'hard';
     }
 ]
 ```

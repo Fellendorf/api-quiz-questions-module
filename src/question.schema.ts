@@ -1,10 +1,9 @@
 import { Schema } from 'mongoose';
 import {
-  Answer,
+  Option,
   Code,
   difficulties,
   languages,
-  Meta,
   Question,
 } from './question.interface';
 
@@ -12,14 +11,15 @@ export const QUESTION_MODEL_NAME = 'Question';
 
 const COLLECTION_NAME = 'quiz-questions';
 
-const AnswerSchema = new Schema<Answer>({
-  index: {
-    type: Number,
+const OptionSchema = new Schema<Option>({
+  text: {
+    type: String,
     required: true,
   },
-  explanation: {
-    type: String,
+  isCorrect: {
+    type: Boolean,
     required: false,
+    default: false,
   },
 });
 
@@ -33,25 +33,17 @@ const CodeSchema = new Schema<Code>({
   },
 });
 
-const MetaSchema = new Schema<Meta>({
-  reviewed: {
-    type: Boolean,
-    default: false,
-    required: false,
-  },
-  difficult: {
-    type: String,
-    enum: difficulties,
-    required: false,
-    lowercase: true,
-  },
-});
-
 export const QuestionSchema = new Schema<Question>(
   {
     topic: {
       type: String,
       required: true,
+      trim: true,
+    },
+    subtopic: {
+      type: String,
+      required: false,
+      trim: true,
     },
     text: {
       type: String,
@@ -63,22 +55,30 @@ export const QuestionSchema = new Schema<Question>(
       type: CodeSchema,
     },
     options: {
-      type: [String],
+      type: [OptionSchema],
       required: true,
-    },
-    answer: {
       _id: false,
-      type: AnswerSchema,
-      required: true,
     },
-    meta: {
+    explanation: {
       _id: false,
-      type: MetaSchema,
-      requred: false,
+      type: String,
+      required: false,
+    },
+    reviewed: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    difficult: {
+      type: String,
+      enum: difficulties,
+      required: false,
+      lowercase: true,
     },
   },
   {
     collection: COLLECTION_NAME,
     versionKey: false,
+    timestamps: true,
   },
 );
