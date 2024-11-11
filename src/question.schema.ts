@@ -64,6 +64,11 @@ export const QuestionSchema = new Schema<Question>(
       type: String,
       required: false,
     },
+    links: {
+      type: [String],
+      required: false,
+      default: [],
+    },
     reviewed: {
       type: Boolean,
       default: false,

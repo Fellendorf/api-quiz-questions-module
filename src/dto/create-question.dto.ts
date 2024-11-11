@@ -65,6 +65,12 @@ export class CreateQuestionDto implements Question {
   explanation?: string;
 
   @IsOptional()
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => String)
+  links?: string[];
+
+  @IsOptional()
   @IsBoolean()
   reviewed?: boolean;
 

@@ -49,6 +49,7 @@ Table of Contents:
         isCorrect?: boolean;
     }>;
     explanation?: string;
+    links?: Array<string>;
     reviewed?: boolean;
     difficult?: 'easy' | 'medium' | 'hard';
     createdAt: Date;
@@ -78,6 +79,7 @@ ${\textsf{\color{orange}POST}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/
         isCorrect?: boolean;
     }>;
     explanation?: string;
+    links?: Array<string>;
     reviewed?: boolean;
     difficult?: 'easy' | 'medium' | 'hard';
 }
@@ -106,6 +108,7 @@ ${\textsf{\color{blue}PUT}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/que
         isCorrect?: boolean;
     }>;
     explanation?: string;
+    links?: Array<string>;
     reviewed?: boolean;
     difficult?: 'easy' | 'medium' | 'hard';
 }
@@ -154,6 +157,7 @@ ${\textsf{\color{red}DELETE}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/q
             isCorrect?: boolean;
         }>;
         explanation?: string;
+        links?: Array<string>;
         reviewed?: boolean;
         difficult?: 'easy' | 'medium' | 'hard';
         createdAt: Date;
@@ -197,24 +201,28 @@ ${\textsf{\color{orange}POST}}$ &nbsp; &nbsp; &nbsp; &nbsp;`https://{host}/quiz/
 #### REQUEST BODY
 
 ```
-[
-    {
-        topic: string;
-        subtopic?: string;
-        text: string;
-        code?: {
+{
+    questions: [
+        {
+            topic: string;
+            subtopic?: string;
             text: string;
-            language: 'typescript' | 'javascript' | 'html' | 'css';
+            code?: {
+                text: string;
+                language: 'typescript' | 'javascript' | 'html' | 'css';
+            }
+            options: Array<{
+                text: string;
+                isCorrect?: boolean;
+            }>;
+            explanation?: string;
+            links?: Array<string>;
+            reviewed?: boolean;
+            difficult?: 'easy' | 'medium' | 'hard';
         }
-        options: Array<{
-            text: string;
-            isCorrect?: boolean;
-        }>;
-        explanation?: string;
-        reviewed?: boolean;
-        difficult?: 'easy' | 'medium' | 'hard';
-    }
-]
+    ]
+}
+
 ```
 
 <br/>

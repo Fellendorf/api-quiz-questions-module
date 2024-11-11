@@ -5,6 +5,7 @@ export interface Question {
   code?: Code;
   options: Option[];
   explanation?: string;
+  links?: string[];
   reviewed?: boolean;
   difficult?: Difficulty;
 }
